@@ -3,11 +3,12 @@ import {render} from 'react-dom'
 import {Provider} from 'react-redux'
 
 import store from './store'
-import Root from './components/root'
+import Main from './components/root'
 
 render(
   <Provider store={store}>
-    <Root />
+    <Main />
   </Provider>,
+  // <h1>hey there</h1>,
   document.getElementById('main')
 )

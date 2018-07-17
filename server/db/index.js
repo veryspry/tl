@@ -1,21 +1,63 @@
-'use strict'
+const db = require('./db')
+// const Sequelize = require('sequelize')
 
-const db = require('./database')
+const Coffee  = require('./models/coffee')
+const Day  = require('./models/day')
+const Music  = require('./models/music')
+const Resource  = require('./models/resource')
 
-// The purpose of this module is to bring your Sequelize instance (`db`) together
-// with your models (which you should define in separate modules in this directory).
-// Example:
+
+// // Models
+// const Day = db.define('days', {
+//   date: {
+//     type: Sequelize.DATE,
+//     allowNull: false
+//   },
+//   focus: {
+//     type: Sequelize.TEXT,
+//   }
+// })
 //
-// const Puppy = require('./puppy')
-// const Owner = require('./owner')
-
-// After you've required all of your models into this module, you should establish
-// associations (https://sequelize-guides.netlify.com/association-types/) between them here as well!
-// Example:
+// const Resource = db.define('resources', {
+//   name: {
+//     type: Sequelize.TEXT
+//   },
+//   resourceUrl: {
+//     type: Sequelize.TEXT,
+//     validate: {
+//       isUrl: true
+//     }
+//   }
+// })
 //
-// Puppy.belongsTo(Owner)
+// const Coffee = db.define('coffee', {
+//   name: {
+//     type: Sequelize.TEXT
+//   },
+//   roaster: {
+//     type: Sequelize.TEXT
+//   }
+// })
+//
+// const Music = db.define('music', {
+//   album: {
+//     type: Sequelize.TEXT,
+//   },
+//   song: {
+//     type: Sequelize.TEXT,
+//   },
+//   artist: {
+//     type: Sequelize.TEXT,
+//   }
+// })
 
-module.exports = {
-  // Include your models in this exports object as well!
-  db
-}
+Resource.belongsTo(Day)
+Day.hasMany(Resource)
+
+Coffee.belongsTo(Day)
+Day.hasMany(Coffee)
+
+Music.belongsTo(Day)
+Day.hasMany(Music)
+
+module.exports = { db, Day, Resource, Coffee, Music }

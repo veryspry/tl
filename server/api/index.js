@@ -8,11 +8,9 @@ const router = require('express').Router()
 // this file should almost be like a table of contents for the routers you create!
 // For example:
 //
-// For your `/api/puppies` routes:
-// router.use('/puppies', require('./puppies'))
-//
-// And for your `/api/kittens` routes:
-// router.use('/kittens', require('./kittens'))
+// /api/timeline
+router.use('/timeline', require('./timeline'))
+
 
 // If someone makes a request that starts with `/api`,
 // but you DON'T have a corresponding router, this piece of
