@@ -28,6 +28,8 @@ nav {
   top:0;
   z-index: 1;
   background-color: black;
+  /* height: 200px; */
+  /* clip-path: polygon(0 0, 4000px 0, 4000px 87%, 0 100%); */
   /* hide navbar until we scroll down the page */
   /* transform: translateY(var(--element-height)); */
   /* --element-height: -72px; */
@@ -147,3 +149,82 @@ nav a {
   font-weight: 100;
 
 }
+
+/* ----------------------------------------------
+    TIMELINE FORMS
+---------------------------------------------- */
+
+.all-forms-wrapper {
+  margin: 0 auto;
+  padding: 80px 0;
+  width: 70vw;
+  min-height: 100vh;
+  background: lightgrey;
+  border: 1px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-form-wrapper {
+  margin: 20px auto;
+  text-align: center;
+  width: 80%;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* width: 80%; */
+}
+
+.add-form-title {
+  margin: 10px;  
+}
+
+.input-wrapper input {
+  height: 40px;
+  padding: 1px;
+  font-size: 15px;
+}
+
+.input-wrapper textarea {
+  height: 150px;
+  padding: 1px;
+  font-size: 15px;
+}
+
+.add-form-button-wrapper {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.add-form-button-wrapper button {
+  height: 20px;
+  width: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* HOLD DOWN BOTTOM */
