@@ -33,15 +33,16 @@ class Timeline extends React.Component {
               <div key={day.id}>
                 <div  className="day-wrapper">
                   <div className="date-div">
-                    <h5 className="date" />
+                    <h5 className="date" >{day.day} {day.month}, {day.year}</h5>
                   </div>
                   <h3 className="learned">{day.focus}</h3>
                   <Coffee coffees={day.coffees} />
                   <Music music={day.music} />
-                  <h3 className="cool-things">Things I found today:
-                    <a href="" />
-                  </h3>
+
+                  {day.resources.length > 0 && <h3 className="cool-things">Things I found today: </h3>}
+
                   <Resources resources={day.resources} />
+
                 </div>
                 <div className="day-seperator" />
               </div>

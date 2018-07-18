@@ -11,7 +11,7 @@ const seed = async () => {
   const day1 = await Day.create({
     // date: 2018-06-17 00:00:00.000-05,
     // date: new Date('1995-12-17T03:24:00'),
-    month: 'july',
+    month: 'July',
     day: '20',
     year: '2018',
     focus:'Today I worked on Wes Montegomery\s "Four On Six." For anyone not familiar with the song, most of it is centered around G minor. I was having trouble playing over the series of ii V I\'s, so I worked on playing smoothly over that. On a web development note, I worked on getting an express to properly parse the request body to handle incoming json.'
@@ -19,7 +19,7 @@ const seed = async () => {
   const day2 = await Day.create({
     // date: 2018-06-18 00:00:00.000-05,
     // date: new Date('1995-12-17T03:24:00'),
-    month: 'july',
+    month: 'July',
     day: '20',
     year: '2018',
     focus: 'Today, I learned all about JavaScript promises and asynchronicity. I also worked on West Coast Blues by Wes Montegomery. Implementing the bebop-ish concepts that I\'ve been working on in 3/4 was hard & definitely needs more work.'
@@ -27,7 +27,7 @@ const seed = async () => {
   const day3 = await Day.create({
     // date: 2018-06-19 00:00:00.000-05,
     // date: new Date('1995-12-17T03:24:00'),
-    month: 'july',
+    month: 'July',
     day: '20',
     year: '2018',
     focus: 'Today I brushed up on incorporating Sequelize into an Express.js application and how Express apps tie together on the back end.'
