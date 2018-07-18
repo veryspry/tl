@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Navbar from './Navbar'
 import Timeline from './timeline/Timeline'
 import Add from './timeline/AddDay'
+import Login from './Login'
 
 const Main = () => {
 
@@ -17,6 +18,7 @@ const Main = () => {
             <Switch>
               <Route exact path="/timeline" component={Timeline}/>
               <Route exact path="/timeline/add" component={Add}/>
+              <Route exact path="/login" component={Login}/>
             </Switch>
           </div>
         </Router>

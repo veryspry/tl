@@ -178,7 +178,7 @@ nav a {
 }
 
 .add-form-title {
-  margin: 10px;  
+  margin: 10px;
 }
 
 .input-wrapper input {
@@ -205,8 +205,20 @@ nav a {
 }
 
 
+/* ----------------------------------------------
+    LOGIN FORMS
+---------------------------------------------- */
 
+.login-wrapper {
+  margin: 200px auto;
+  padding: 70px;
+  max-width: 60vw;
+  background-color: lightgrey;
+}
 
+.login-form-button-wrapper {
+
+}
 
 
 
