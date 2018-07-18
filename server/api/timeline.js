@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const { db, Day, Resource, Coffee, Music } = require('../db/index')
+const { Day, Resource, Coffee, Music } = require('../db/index')
 module.exports = router
 
-
+// GET THE TIMELINE
 router.get('/', async (req, res, next) => {
   try {
     const response = await Day.findAll({
@@ -10,9 +10,21 @@ router.get('/', async (req, res, next) => {
         {model: Resource},
         {model: Coffee},
         {model: Music}
-      ]
+      ],
+      order: [ ['createdAt', 'DESC'] ] // get back our days in order from newest to oldest
     })
-    res.send(response)
+    res.send(response) // TEST CHANGING THIS TO JSON
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
+// GET THE DAYS FOR USE IN SELECT FIELDS (COFFEE, MUSIC, RESOURCES)
+router.get('/days', async (req, res, next) => {
+  try {
+    const response = await Day.findAll({ order: [ ['createdAt', 'DESC'] ] })
+    res.json(response)
   }
   catch (err) {
     next(err)
@@ -21,7 +33,7 @@ router.get('/', async (req, res, next) => {
 
 // curl -d "month=july&day=20&year=2018&focus=I did some stuff and things" -X POST http://localhost:2000/api/timeline/add/day
 
-// add a day
+// ADD A DAY
 router.post('/add/day', async (req, res, next) => {
   try {
     await Day.create({
@@ -34,6 +46,56 @@ router.post('/add/day', async (req, res, next) => {
     res.status(201).send('Day added successfully!')
   }
   catch (err) {
+    res.status(500).send('Sorry, unable to add this')
+    next(err)
+  }
+})
+
+// ADD A COFFEE
+router.post('/add/coffee', async (req, res, next) => {
+  try {
+    await Coffee.create({
+      name: req.body.name,
+      roaster: req.body.roaster,
+      dayId: req.body.dayId,
+    })
+    res.status(201).send('Coffee added successfully!')
+  }
+  catch (err) {
+    res.status(500).send('Sorry, unable to add this')
+    next(err)
+  }
+})
+
+// ADD MUSIC
+router.post('/add/music', async (req, res, next) => {
+  try {
+    await Music.create({
+      album: req.body.album,
+      song: req.body.song,
+      artist: req.body.artist,
+      dayId: req.body.dayId,
+    })
+    res.status(201).send('Music added successfully!')
+  }
+  catch (err) {
+    res.status(500).send('Sorry, unable to add this')
+    next(err)
+  }
+})
+
+// ADD RESOURCE
+router.post('/add/resource', async (req, res, next) => {
+  try {
+    await Resource.create({
+      name: req.body.name,
+      resourceUrl: req.body.resourceUrl,
+      dayId: req.body.dayId,
+    })
+    res.status(201).send('Resource added successfully!')
+  }
+  catch (err) {
+    res.status(500).send('Sorry, unable to add this')
     next(err)
   }
 })
