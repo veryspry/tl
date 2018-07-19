@@ -3,11 +3,12 @@ import axios from 'axios'
 import loggingMiddleware from 'redux-logger' // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk' // https://github.com/gaearon/redux-thunk
 
-import { GOT_TIMELINE } from './redux/actions'
+import { GOT_TIMELINE, GOT_DAY } from './redux/actions'
 
 
 const initialState = {
   timeline: [],
+  selectedDay: {},
 }
 
 
@@ -15,6 +16,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_TIMELINE:
       return {...state, timeline: action.days}
+    case GOT_DAY:
+        return {...state, selectedDay: action.day}
     default:
       return state
   }

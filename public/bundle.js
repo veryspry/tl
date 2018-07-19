@@ -128,7 +128,7 @@ var Login = function (_React$Component) {
         { className: 'login-wrapper' },
         _react2.default.createElement(
           'form',
-          null,
+          { action: '/login', method: 'POST' },
           _react2.default.createElement(
             'div',
             { className: 'input-wrapper' },
@@ -271,6 +271,105 @@ exports.default = Navbar;
 
 /***/ }),
 
+/***/ "./client/components/Signup.js":
+/*!*************************************!*\
+  !*** ./client/components/Signup.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Signup = function (_React$Component) {
+  _inherits(Signup, _React$Component);
+
+  function Signup() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Signup);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Signup.__proto__ || Object.getPrototypeOf(Signup)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      email: '',
+      password: ''
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Signup, [{
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'login-wrapper' },
+        _react2.default.createElement(
+          'form',
+          { action: '/signup', method: 'POST' },
+          _react2.default.createElement(
+            'div',
+            { className: 'input-wrapper' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: '' },
+              'Email'
+            ),
+            _react2.default.createElement('input', { type: 'text' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'input-wrapper' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: '' },
+              'Password'
+            ),
+            _react2.default.createElement('input', { type: 'text' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'login-form-button-wrapper' },
+            _react2.default.createElement(
+              'button',
+              { type: 'submit' },
+              'Signup'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Signup;
+}(_react2.default.Component);
+
+exports.default = Signup;
+
+/***/ }),
+
 /***/ "./client/components/root.js":
 /*!***********************************!*\
   !*** ./client/components/root.js ***!
@@ -311,6 +410,14 @@ var _Login = __webpack_require__(/*! ./Login */ "./client/components/Login.js");
 
 var _Login2 = _interopRequireDefault(_Login);
 
+var _Signup = __webpack_require__(/*! ./Signup */ "./client/components/Signup.js");
+
+var _Signup2 = _interopRequireDefault(_Signup);
+
+var _Update = __webpack_require__(/*! ./timeline/update/Update */ "./client/components/timeline/update/Update.js");
+
+var _Update2 = _interopRequireDefault(_Update);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // components
@@ -331,7 +438,9 @@ var Main = function Main() {
           null,
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/timeline', component: _Timeline2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/timeline/add', component: _AddDay2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', component: _Login2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', component: _Login2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/signup', component: _Signup2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/timeline/update/:id', component: _Update2.default })
         )
       )
     )
@@ -370,6 +479,8 @@ var _DaysSelector2 = _interopRequireDefault(_DaysSelector);
 
 var _actions = __webpack_require__(/*! ../../redux/actions */ "./client/redux/actions.js");
 
+var _helperData = __webpack_require__(/*! ./helperData */ "./client/components/timeline/helperData.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -381,8 +492,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 var Add = function (_React$Component) {
   _inherits(Add, _React$Component);
@@ -661,7 +770,7 @@ var Add = function (_React$Component) {
                   { value: 'title' },
                   '--Select month--'
                 ),
-                months.map(function (month) {
+                _helperData.months.map(function (month) {
                   return _react2.default.createElement(
                     'option',
                     { value: month, key: month },
@@ -1373,6 +1482,250 @@ exports.default = timelineDummy;
 
 /***/ }),
 
+/***/ "./client/components/timeline/helperData.js":
+/*!**************************************************!*\
+  !*** ./client/components/timeline/helperData.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+exports.months = months;
+
+/***/ }),
+
+/***/ "./client/components/timeline/update/Update.js":
+/*!*****************************************************!*\
+  !*** ./client/components/timeline/update/Update.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _actions = __webpack_require__(/*! ../../../redux/actions */ "./client/redux/actions.js");
+
+var _helperData = __webpack_require__(/*! ../helperData */ "./client/components/timeline/helperData.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Update = function (_React$Component) {
+  _inherits(Update, _React$Component);
+
+  function Update() {
+    _classCallCheck(this, Update);
+
+    var _this = _possibleConstructorReturn(this, (Update.__proto__ || Object.getPrototypeOf(Update)).call(this));
+
+    _this.handleChange = function (event) {
+      _this.setState(_defineProperty({}, event.target.name, event.target.value));
+      console.log(_this.state);
+    };
+
+    _this.daySubmit = function (event) {
+      event.preventDefault();
+      var dayId = _this.props.match.params.id;
+      _this.props.updateDay(dayId, _this.state);
+      _this.props.fetchDay(dayId);
+    };
+
+    _this.state = {
+      month: '',
+      day: '',
+      year: '',
+      focus: '',
+      coffees: [],
+      music: [],
+      resources: []
+    };
+
+    return _this;
+  }
+
+  _createClass(Update, [{
+    key: 'componentDidMount',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.props.fetchDay(this.props.match.params.id);
+
+              case 2:
+                _context.next = 4;
+                return this.setState({
+                  month: this.props.selectedDay.month,
+                  day: this.props.selectedDay.day,
+                  year: this.props.selectedDay.year,
+                  focus: this.props.selectedDay.focus,
+                  coffees: this.props.selectedDay.coffees,
+                  music: this.props.selectedDay.music,
+                  resources: this.props.selectedDay.resources
+                });
+
+              case 4:
+                console.log(this.state);
+
+              case 5:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _ref.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'submit-form-wrapper day-form' },
+        _react2.default.createElement(
+          'h1',
+          { className: 'add-form-title' },
+          'Update some stuff'
+        ),
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.daySubmit },
+          _react2.default.createElement(
+            'div',
+            { className: 'input-wrapper' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'month' },
+              'Month:'
+            ),
+            _react2.default.createElement(
+              'select',
+              { name: 'month', onChange: this.handleChange, value: this.state.month },
+              _react2.default.createElement(
+                'option',
+                { value: '' },
+                '--Select month--'
+              ),
+              _helperData.months.map(function (month) {
+                return _react2.default.createElement(
+                  'option',
+                  { value: month, key: month },
+                  month
+                );
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'input-wrapper' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'day' },
+              'Day:'
+            ),
+            _react2.default.createElement('input', { type: 'text', name: 'day', value: this.state.day, onChange: this.handleChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'input-wrapper' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'year' },
+              'Year:'
+            ),
+            _react2.default.createElement('input', { type: 'text', name: 'year', value: this.state.year, onChange: this.handleChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'input-wrapper' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'focus' },
+              'Focus:'
+            ),
+            _react2.default.createElement('textarea', { type: 'text', name: 'focus', value: this.state.focus, onChange: this.handleChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'add-form-button-wrapper' },
+            _react2.default.createElement(
+              'button',
+              { type: 'submit' },
+              'Submit'
+            ),
+            _react2.default.createElement(
+              'button',
+              { type: 'button', onClick: this.clearForm },
+              'Clear'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Update;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    selectedDay: state.selectedDay
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+
+    fetchDay: function fetchDay(dayId) {
+      return dispatch((0, _actions.fetchDay)(dayId));
+    },
+
+    updateDay: function updateDay(dayId, dayData) {
+      return dispatch((0, _actions.updateDay)(dayId, dayData));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Update);
+
+/***/ }),
+
 /***/ "./client/main.js":
 /*!************************!*\
   !*** ./client/main.js ***!
@@ -1424,7 +1777,7 @@ document.getElementById('main'));
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addResource = exports.addMusic = exports.addCoffee = exports.addDay = exports.fetchTimeline = exports.GOT_TIMELINE = undefined;
+exports.UpdateDay = exports.fetchDay = exports.gotDay = exports.addResource = exports.addMusic = exports.addCoffee = exports.addDay = exports.fetchTimeline = exports.GOT_DAY = exports.GOT_TIMELINE = undefined;
 
 var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
@@ -1437,6 +1790,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 // Action Types
 var GOT_TIMELINE = 'GOT_TIMELINE';
 var DAY_ADDED = 'DAY_ADDED'; // PROBABLY CAN REMOVE THIS
+var GOT_DAY = 'GOT_DAY';
 
 // Action Creators
 var gotDays = function gotDays(days) {
@@ -1453,6 +1807,13 @@ var dayAdded = function dayAdded(day) {
   };
 };
 
+var gotDay = function gotDay(day) {
+  return {
+    type: GOT_DAY,
+    day: day
+  };
+};
+
 // Thunks
 
 // get entire timeline
@@ -1465,21 +1826,30 @@ var fetchTimeline = function fetchTimeline() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              _context.prev = 0;
+              _context.next = 3;
               return _axios2.default.get('/api/timeline');
 
-            case 2:
+            case 3:
               _ref2 = _context.sent;
               data = _ref2.data;
 
               dispatch(gotDays(data));
+              _context.next = 11;
+              break;
 
-            case 5:
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context['catch'](0);
+
+              console.log(_context.t0);
+
+            case 11:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, undefined);
+      }, _callee, undefined, [[0, 8]]);
     }));
 
     return function (_x) {
@@ -1488,16 +1858,57 @@ var fetchTimeline = function fetchTimeline() {
   }();
 };
 
-// add a single day
-var addDay = function addDay(month, day, year, focus) {
+var fetchDay = function fetchDay(dayId) {
   return function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
+      var _ref4, data;
+
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
+              return _axios2.default.get('/api/timeline/' + dayId);
+
+            case 3:
+              _ref4 = _context2.sent;
+              data = _ref4.data;
+
+              dispatch(gotDay(data));
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2['catch'](0);
+
+              console.log(_context2.t0);
+
+            case 11:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, undefined, [[0, 8]]);
+    }));
+
+    return function (_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+};
+
+// add a single day
+var addDay = function addDay(month, day, year, focus) {
+  return function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(dispatch) {
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
               return _axios2.default.post('/api/timeline/add/day', {
                 month: month,
                 day: day,
@@ -1507,46 +1918,6 @@ var addDay = function addDay(month, day, year, focus) {
 
             case 3:
               // get the new timeline so that redux state updates & react can re-render if necessary
-              dispatch(fetchTimeline());
-              _context2.next = 9;
-              break;
-
-            case 6:
-              _context2.prev = 6;
-              _context2.t0 = _context2['catch'](0);
-
-              console.log(_context2.t0);
-
-            case 9:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, undefined, [[0, 6]]);
-    }));
-
-    return function (_x2) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-};
-
-var addCoffee = function addCoffee(name, roaster, dayId) {
-  return function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(dispatch) {
-      return regeneratorRuntime.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
-              return _axios2.default.post('/api/timeline/add/coffee', {
-                name: name,
-                roaster: roaster,
-                dayId: dayId
-              });
-
-            case 3:
               dispatch(fetchTimeline());
               _context3.next = 9;
               break;
@@ -1566,24 +1937,23 @@ var addCoffee = function addCoffee(name, roaster, dayId) {
     }));
 
     return function (_x3) {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 };
 
-var addMusic = function addMusic(album, song, artist, dayId) {
+var addCoffee = function addCoffee(name, roaster, dayId) {
   return function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch) {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch) {
       return regeneratorRuntime.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
-              return _axios2.default.post('/api/timeline/add/music', {
-                album: album,
-                song: song,
-                artist: artist,
+              return _axios2.default.post('/api/timeline/add/coffee', {
+                name: name,
+                roaster: roaster,
                 dayId: dayId
               });
 
@@ -1607,23 +1977,24 @@ var addMusic = function addMusic(album, song, artist, dayId) {
     }));
 
     return function (_x4) {
-      return _ref5.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
 };
 
-var addResource = function addResource(name, resourceUrl, dayId) {
+var addMusic = function addMusic(album, song, artist, dayId) {
   return function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(dispatch) {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(dispatch) {
       return regeneratorRuntime.wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.prev = 0;
               _context5.next = 3;
-              return _axios2.default.post('/api/timeline/add/resource', {
-                name: name,
-                resourceUrl: resourceUrl,
+              return _axios2.default.post('/api/timeline/add/music', {
+                album: album,
+                song: song,
+                artist: artist,
                 dayId: dayId
               });
 
@@ -1647,17 +2018,107 @@ var addResource = function addResource(name, resourceUrl, dayId) {
     }));
 
     return function (_x5) {
-      return _ref6.apply(this, arguments);
+      return _ref7.apply(this, arguments);
+    };
+  }();
+};
+
+var addResource = function addResource(name, resourceUrl, dayId) {
+  return function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(dispatch) {
+      return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.prev = 0;
+              _context6.next = 3;
+              return _axios2.default.post('/api/timeline/add/resource', {
+                name: name,
+                resourceUrl: resourceUrl,
+                dayId: dayId
+              });
+
+            case 3:
+              dispatch(fetchTimeline());
+              _context6.next = 9;
+              break;
+
+            case 6:
+              _context6.prev = 6;
+              _context6.t0 = _context6['catch'](0);
+
+              console.log(_context6.t0);
+
+            case 9:
+            case 'end':
+              return _context6.stop();
+          }
+        }
+      }, _callee6, undefined, [[0, 6]]);
+    }));
+
+    return function (_x6) {
+      return _ref8.apply(this, arguments);
+    };
+  }();
+};
+
+var UpdateDay = function UpdateDay(dayId, dayData) {
+  console.log('inside Updat day thunk');
+  return function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(dispatch) {
+      return regeneratorRuntime.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.prev = 0;
+              _context7.next = 3;
+              return (0, _axios2.default)({
+                method: 'put',
+                url: '/api/timeline/update/' + dayId,
+                data: {
+                  month: dayData.month,
+                  day: dayData.day,
+                  year: dayData.year,
+                  focus: dayData.focus
+                }
+              });
+
+            case 3:
+              dispatch(fetchDay(dayId));
+              _context7.next = 9;
+              break;
+
+            case 6:
+              _context7.prev = 6;
+              _context7.t0 = _context7['catch'](0);
+
+              console.log(_context7.t0);
+
+            case 9:
+            case 'end':
+              return _context7.stop();
+          }
+        }
+      }, _callee7, undefined, [[0, 6]]);
+    }));
+
+    return function (_x7) {
+      return _ref9.apply(this, arguments);
     };
   }();
 };
 
 exports.GOT_TIMELINE = GOT_TIMELINE;
+exports.GOT_DAY = GOT_DAY;
 exports.fetchTimeline = fetchTimeline;
 exports.addDay = addDay;
 exports.addCoffee = addCoffee;
 exports.addMusic = addMusic;
 exports.addResource = addResource;
+exports.gotDay = gotDay;
+exports.fetchDay = fetchDay;
+exports.UpdateDay = UpdateDay;
 
 /***/ }),
 
@@ -1697,7 +2158,8 @@ var _actions = __webpack_require__(/*! ./redux/actions */ "./client/redux/action
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-  timeline: []
+  timeline: [],
+  selectedDay: {}
 };
 
 var reducer = function reducer() {
@@ -1707,6 +2169,8 @@ var reducer = function reducer() {
   switch (action.type) {
     case _actions.GOT_TIMELINE:
       return _extends({}, state, { timeline: action.days });
+    case _actions.GOT_DAY:
+      return _extends({}, state, { selectedDay: action.day });
     default:
       return state;
   }

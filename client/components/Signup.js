@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Login extends React.Component {
+class Signup extends React.Component {
 
   state = {
     email: '',
@@ -11,7 +11,7 @@ class Login extends React.Component {
 
     return (
       <div className="login-wrapper">
-        <form action="/login" method="POST">
+        <form action="/signup" method="POST">
 
           <div className="input-wrapper">
             <label htmlFor="">Email</label>
@@ -24,7 +24,7 @@ class Login extends React.Component {
           </div>
 
           <div className="login-form-button-wrapper">
-            <button type="submit">Login</button>
+            <button type="submit">Signup</button>
           </div>
 
         </form>
@@ -34,4 +34,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default Signup

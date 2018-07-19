@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import DaysSelector from './DaysSelector'
 import { addDay, fetchTimeline, addCoffee, addMusic, addResource } from '../../redux/actions'
 
+import { months } from './helperData'
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 class Add extends React.Component {
   constructor() {
@@ -262,4 +262,4 @@ const mapDispatchToProps = dispatch => ({
 
 // add my state and dispathc thunks here
 
-export default connect(mapStateToProps  , mapDispatchToProps)(Add)
+export default connect(mapStateToProps, mapDispatchToProps)(Add)

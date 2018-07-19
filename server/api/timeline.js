@@ -20,6 +20,43 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// GET SPECIFIC DAY
+router.get('/:id', async (req, res, next) => {
+  try {
+    const response = await Day.findById(req.params.id, {
+      include: [
+        {model: Resource},
+        {model: Coffee},
+        {model: Music}
+      ]
+    })
+    res.send(response)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
+// UPDATE SPECIFIC DAY
+router.put('/update/:id', async (req, res, next) => {
+  try {
+    await Day.update({
+      month: req.body.month,
+      day: req.body.day,
+      year: req.body.year,
+      focus: req.body.focus,
+    }, {
+      where: {id: req.params.id},
+      returning: true,
+      plaing: true,
+    })
+    res.status(201).send('Update complete!')
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
 // GET THE DAYS FOR USE IN SELECT FIELDS (COFFEE, MUSIC, RESOURCES)
 router.get('/days', async (req, res, next) => {
   try {

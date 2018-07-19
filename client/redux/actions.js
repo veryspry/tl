@@ -3,6 +3,7 @@ import axios from 'axios'
 // Action Types
 const GOT_TIMELINE = 'GOT_TIMELINE'
 const DAY_ADDED = 'DAY_ADDED'  // PROBABLY CAN REMOVE THIS
+const GOT_DAY = 'GOT_DAY'
 
 // Action Creators
 const gotDays = days => ({
@@ -15,13 +16,35 @@ const dayAdded = day => ({ // PROBABLY CAN REMOVE THIS
   day
 })
 
+const gotDay = day => ({
+  type: GOT_DAY,
+  day
+})
+
 // Thunks
 
 // get entire timeline
 const fetchTimeline = () => {
   return async dispatch => {
-    const { data } = await axios.get('/api/timeline')
-    dispatch(gotDays(data))
+    try {
+      const { data } = await axios.get('/api/timeline')
+      dispatch(gotDays(data))
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+const fetchDay = dayId => {
+  return async dispatch => {
+    try {
+      const { data } = await axios.get(`/api/timeline/${dayId}`)
+      dispatch(gotDay(data))
+    }
+    catch (err) {
+      console.log(err)
+    }
   }
 }
 
@@ -93,12 +116,38 @@ const addResource = (name, resourceUrl, dayId) => {
   }
 }
 
+const UpdateDay = (dayId, dayData) => {
+  console.log('inside Updat day thunk');
+  return async dispatch => {
+    try {
+      await axios({
+        method: 'put',
+        url: `/api/timeline/update/${dayId}`,
+        data: {
+          month: dayData.month,
+          day: dayData.day,
+          year: dayData.year,
+          focus: dayData.focus,
+        }
+      })
+      dispatch(fetchDay(dayId))
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+}
+
 
 export {
   GOT_TIMELINE,
+  GOT_DAY,
   fetchTimeline,
   addDay,
   addCoffee,
   addMusic,
   addResource,
+  gotDay,
+  fetchDay,
+  UpdateDay,
 }
